@@ -6,8 +6,8 @@ export const fetchAllIngredients = async () => {
     try {
         const { data } = await axios.get(INGREDIENTS_URL);
         return data.map(item => {
-            item.created_at = moment(item.created_at).format('MMMM Do YYYY, h:mm:ss a')
-            item.updated_at = moment(item.updated_at).format('MMMM Do YYYY, h:mm:ss a')
+            item.created_at = moment(item.created_at).format('MMMM Do YYYY, h:mm a')
+            item.updated_at = moment(item.updated_at).format('MMMM Do YYYY, h:mm a')
             return item
         });
     } catch (err) {
@@ -17,11 +17,10 @@ export const fetchAllIngredients = async () => {
 export const getIngredientByID = async (id) => {
     try {
         const { data } = await axios.get(INGREDIENTS_URL + `/${id}`);
-        return data.map(item => {
-            item.created_at = moment(item.created_at).format('MMMM Do YYYY, h:mm:ss a')
-            item.updated_at = moment(item.updated_at).format('MMMM Do YYYY, h:mm:ss a')
-            return item
-        });
+        data.created_at = moment(data.created_at).format('MMMM Do YYYY, h:mm a')
+        data.updated_at = moment(data.updated_at).format('MMMM Do YYYY, h:mm a')
+        console.log(data)
+        return data
     } catch (err) {
         console.log(err)
     }

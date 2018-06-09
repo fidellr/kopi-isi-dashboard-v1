@@ -78,7 +78,6 @@ const LayoutDrawer = ({ isDrawerOpen, handleDrawerToggle, onSignOut, userInfo, c
             </div>
         </Fragment>
     )
-    console.log(isDrawerOpen)
     return (
         <Fragment>
             <Hidden mdUp>
